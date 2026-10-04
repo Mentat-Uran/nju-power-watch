@@ -31,10 +31,6 @@
       "minLength": 1,
       "description": "Dormitory ID"
     },
-    "学号": {
-      "type": "string",
-      "description": "Student ID (if applicable)"
-    },
     "剩余电量": {
       "type": "string",
       "pattern": "^[0-9]+\\.?[0-9]*度$",

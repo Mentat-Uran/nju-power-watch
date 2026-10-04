@@ -1,9 +1,26 @@
 """Privacy regressions for parsing and persisting electricity records."""
 import json
+from pathlib import Path
 
 import pytest
 
 from nju_electric_query import parse_html, save_result
+
+
+def test_daily_record_schemas_disallow_student_number():
+    repository_root = Path(__file__).resolve().parents[2]
+    schema_paths = (
+        repository_root
+        / "specs/001-daily-data-pipeline/contracts/daily-record.schema.json",
+        repository_root / "tests/schemas/daily-record.schema.json",
+    )
+
+    schemas = [json.loads(path.read_text(encoding="utf-8")) for path in schema_paths]
+
+    assert schemas[0] == schemas[1]
+    for schema in schemas:
+        assert "学号" not in schema["properties"]
+        assert schema["additionalProperties"] is False
 
 
 def test_parse_html_does_not_return_student_number():
