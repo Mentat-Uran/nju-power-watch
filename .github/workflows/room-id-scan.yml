@@ -1,8 +1,6 @@
 name: Room ID Scan
 
 on:
-  schedule:
-    - cron: '0 13 * * *'
   workflow_dispatch:
     inputs:
       scan_progress:

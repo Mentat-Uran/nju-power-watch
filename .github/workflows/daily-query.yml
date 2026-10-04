@@ -1,8 +1,6 @@
 name: Daily Electricity Query
 
 on:
-  schedule:
-    - cron: '0 22 * * *'   # 06:00 UTC daily (14:00 CST)
   workflow_dispatch:
     inputs:
       batch_index:
