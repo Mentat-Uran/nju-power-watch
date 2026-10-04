@@ -135,7 +135,6 @@ def parse_html(html: str) -> dict:
             result["校区"] = check_data.get("sysName", "")
             result["楼栋"] = check_data.get("buildName", "")
             result["房间"] = check_data.get("roomName", "")
-            result["学号"] = check_data.get("stuempno", "")
         except json.JSONDecodeError:
             pass
 
@@ -823,8 +822,10 @@ async def save_result(result: dict, output_dir: Path, quiet: bool = False):
             print(f"\n警告: 文件 {filepath} 已存在，跳过保存")
         return False
 
-    # 移除 id 和 宿舍ID 字段
-    save_data = {k: v for k, v in result.items() if k not in ('id', '宿舍ID')}
+    # Remove internal room identifiers and personal identifiers before persistence.
+    save_data = {
+        k: v for k, v in result.items() if k not in ('id', '宿舍ID', '学号')
+    }
 
     try:
         async with aiofiles.open(filepath, "w", encoding="utf-8") as f:
