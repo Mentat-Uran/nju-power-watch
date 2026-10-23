@@ -24,7 +24,6 @@ The data model supports a file-based storage system for electricity consumption 
   "楼栋": "19幢",
   "房间": "19栋第16层1613",
   "宿舍ID": "53463",
-  "学号": "",
   "剩余电量": "125.50度",
   "timestamp": "2026-05-15T02:00:00Z",
   "success": true
@@ -39,7 +38,6 @@ The data model supports a file-based storage system for electricity consumption 
 | 楼栋 | string | Yes | Building name | Non-empty |
 | 房间 | string | Yes | Room name | Non-empty |
 | 宿舍ID | string | Yes | Dormitory ID (same as id) | Non-empty, matches id |
-| 学号 | string | No | Student ID (if applicable) | May be empty |
 | 剩余电量 | string | Yes | Remaining electricity in 度 | Format: "{number}度", number > 0 |
 | timestamp | string | Yes | ISO 8601 timestamp of query | Valid ISO 8601 format |
 | success | boolean | Yes | Query success flag | Must be true for valid record |
